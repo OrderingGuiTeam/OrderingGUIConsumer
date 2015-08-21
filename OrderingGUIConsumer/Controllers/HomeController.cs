@@ -10,7 +10,7 @@ namespace OrderingGUIConsumer.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return View("Slider");
         }
 
         public ActionResult About()
