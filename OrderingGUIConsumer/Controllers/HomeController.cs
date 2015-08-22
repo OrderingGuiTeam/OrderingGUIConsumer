@@ -13,6 +13,11 @@ namespace OrderingGUIConsumer.Controllers
             return View();
         }
 
+        public ActionResult ScrollingNav()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
