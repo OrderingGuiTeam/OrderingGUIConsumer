@@ -17,13 +17,13 @@
                 <li class="hidden">
                     <a class="page-scroll" href="#page-top"></a>
                 </li>
-                <li>
+                <li id="navServices">
                     <a class="page-scroll" href="#services">Services</a>
                 </li>
-                <li>
+                <li id="navBundles">
                     <a class="page-scroll" href="#bundles">Bundles</a>
                 </li>
-                <li>
+                <li id="navOrderSummary">
                     <a class="page-scroll" href="#orderSummary">Order Summary</a>
                 </li>
             </ul>
@@ -32,24 +32,15 @@
     </div>
     <!-- /.container -->
 </nav>
-<!-- Intro Section
-<section id="intro" class="first-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1>Scrolling Nav</h1>
-                <p><strong>Usage Instructions:</strong> Make sure to include the <code>scrolling-nav.js</code>, <code>jquery.easing.min.js</code>, and <code>scrolling-nav.css</code> files. To make a link smooth scroll to another section on the page, give the link the <code>.page-scroll</code> class and set the link target to a corresponding ID on the page.</p>
-                <a class="btn btn-default page-scroll" href="#about">Click Me to Scroll Down!</a>
-            </div>
-        </div>
-    </div>
-</section>  -->
 
 <section id="login" class="login-section">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                @Html.Partial("~/Views/Account/Login.cshtml")
+                @using (Html.BeginForm("Index", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.Partial("~/Views/Account/Login.cshtml")
+                }
             </div>
             <div class="col-md-6">
                 @Html.Partial("~/Views/Account/Register.cshtml")
@@ -58,8 +49,17 @@
     </div>
 </section>
 
-<!-- About Section -->
-<section id="services" class="second-section">
+<!-- Services Section -->
+<section id="services404" class="second-section" style="display: none">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Services are not available anymore</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="services" class="second-section" style="display: block">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -68,7 +68,7 @@
         </div>
     </div>
 </section>
-<!-- Services Section -->
+<!-- Bundles Section -->
 <section id="bundles" class="first-section">
     <div class="container">
         <div class="row">
@@ -78,7 +78,7 @@
         </div>
     </div>
 </section>
-<!-- Contact Section -->
+<!-- Order Summary Section -->
 <section id="orderSummary" class="second-section">
     <div class="container">
         <div class="row">
@@ -96,3 +96,9 @@
 <script src="~/Scripts/jquery.easing.min.js"></script>
 <script src="~/Scripts/scrolling-nav.js"></script>
 
+<script type="text/javascript">
+    function Hide() {
+        document.getElementById("services").style.display = 'none';
+        document.getElementById("services404").style.display = 'block';
+    }
+</script>
