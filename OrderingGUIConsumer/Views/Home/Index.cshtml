@@ -37,9 +37,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                @using (Html.BeginForm("Index", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                @using (Html.BeginForm("ValidateCredentials", "Login", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
-                    @Html.Partial("~/Views/Account/Login.cshtml")
+                    @Html.Partial("~/Views/Login/Login.cshtml")
                 }
             </div>
             <div class="col-md-6">
