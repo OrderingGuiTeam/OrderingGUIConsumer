@@ -29,7 +29,7 @@ namespace OrderingGUIConsumer.Models
 
             if (dataReader.HasRows)
             {
-                result = "Home/AfterLogin";
+                result = "Home/Index";
             }
             else
             {

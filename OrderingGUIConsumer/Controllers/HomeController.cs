@@ -10,11 +10,11 @@ namespace OrderingGUIConsumer.Controllers
     {
         public ActionResult Index()
         {
-            return View("LoginStartPage");
+            return View();
         }
-        public ActionResult AfterLogin()
+        public ActionResult LoginStartPage()
         {
-            return View("Index");
+            return View();
         }
 
 
