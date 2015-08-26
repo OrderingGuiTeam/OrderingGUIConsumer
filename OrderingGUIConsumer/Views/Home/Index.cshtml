@@ -33,9 +33,13 @@
     <!-- /.container -->
 </nav>
 
-<section id="login" class="login-section">
-    <div class="container col-md-6 col-md-offset-3">
-        <p>Customer Details Goes Here.</p>
+<section id="customerDetails" class="customerDetails-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                @Html.Partial("~/Views/CustomerDetails/Details.cshtml")
+            </div>
+        </div>
     </div>
 </section>
 
