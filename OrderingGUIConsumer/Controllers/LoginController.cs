@@ -15,22 +15,15 @@ namespace OrderingGUIConsumer.Controllers
         {
             return View();
         }
-
-        [HttpGet]
-        public ActionResult ValidateCredentials()
-        {
-            return View();
-        }
-
-        //
+                
         //Post: /Login Credentials
-        [HttpPost]
+   
         public string ValidateCredentials(string strUserID, string strPwd)
         {
             LoginModel objLoginModel = new LoginModel();
             ViewBag.Name = strUserID;
             ViewBag.Pwd = strPwd;
-            return objLoginModel.isUserValid(strUserID, strPwd);
+            return objLoginModel.isUserValid(strUserID, strPwd);        
         }
     }
 }

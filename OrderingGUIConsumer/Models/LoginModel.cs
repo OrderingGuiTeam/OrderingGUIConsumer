@@ -9,7 +9,7 @@ namespace OrderingGUIConsumer.Models
 {
     public class LoginModel
     {
-        string message;
+        string result;
 
         public string isUserValid(string strUser, string strPwd)
         {
@@ -29,18 +29,15 @@ namespace OrderingGUIConsumer.Models
 
             if (dataReader.HasRows)
             {
-                message = "Logged In";
+                result = "Home/AfterLogin";
             }
             else
             {
-                message = "Invalid Username or Password.";
+                result = "Invalid Username or Password";
             }
             dataReader.Close();
             connect.Close();
-            return message;
-
-           
-
+            return result;
         }
     }
 }

@@ -12,17 +12,18 @@
 
     //validate user
     $.ajax({
-        type: 'POST',
+        type: 'Post',
         url: 'Login/ValidateCredentials',
         data: {
 
             'strUserID': userid,
             'strPwd': userpwd
         },
-        success: function (msg) {
-            alert(msg);
-        }
-    });
-
-
+        success: function (data) {
+            if (data == "Invalid Username or Password")
+                alert(data);
+            else
+                window.location.href = data;
+        }        
+    }); 
 }
