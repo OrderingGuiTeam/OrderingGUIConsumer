@@ -23,7 +23,7 @@
             if (data == "Invalid Username or Password")
                 alert(data);
             else
-                window.location.href = data;
+                window.location.href = data+"?agentName="+userid;
         }        
     }); 
 }
