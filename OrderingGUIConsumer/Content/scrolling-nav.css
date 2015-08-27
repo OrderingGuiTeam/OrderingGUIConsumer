@@ -36,6 +36,8 @@ of those sections to manage the look and feel of the site. */
     padding-top: 40px;
     text-align: left;
     background: #fff;
+    overflow: hidden;
+    overflow-y:scroll;
 }
 
 .login-section {
@@ -44,7 +46,6 @@ of those sections to manage the look and feel of the site. */
     text-align: left;
     background: #fff;
 }
-
 .register-section {
     height: 100%;
     padding-top: 150px;
@@ -63,14 +64,14 @@ of those sections to manage the look and feel of the site. */
     padding-top: 20px;
     text-align: center;
     background: #fff;
-    overflow: hidden;
-    overflow-y:scroll;
 }
 .second-section {
     height: 100%;
     padding-top: 150px;
     text-align: center;
     background: #eee;
+    overflow: hidden;
+    overflow-y:scroll;
 }
 .button {
     height:40px;

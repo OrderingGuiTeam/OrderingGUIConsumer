@@ -22,8 +22,15 @@
         success: function (data) {
             if (data == "Invalid Username or Password")
                 alert(data);
-            else
-                window.location.href = data+"?agentName="+userid;
+            else {
+                $(function () {
+                    $.post('/SetSession/SetVariable',
+                           { key: "agentName", value: userid }, function (data) {
+                               alert("Success " + data.success);
+                           });
+                });
+            }
+            window.location.href = data;
         }        
     }); 
 }

@@ -1,5 +1,5 @@
 ﻿<!-- Navigation -->
-
+@model OrderingGUIConsumer.Models.PortalModel
 
 <nav class="navbar navbar-default navbar-fixed-top" style="background-color:crimson" role="navigation">
     <div class="container">
@@ -17,16 +17,16 @@
             <ul class="nav navbar-nav">
                 <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
                 <li class="hidden">
-                    <a class="page-scroll" href="#page-top"></a>
+                    <a id ="aLinkPageTop" class="page-scroll" href="#page-top"></a>
                 </li>
                 <li id="navServices">
-                    <a class="page-scroll" href="#service"><font color="white">Services</font></a>
+                    <a id ="aLinkServices" class="page-scroll" href="#service"><font color="white">Services</font></a>
                 </li>
                 <li id="navBundles">
-                    <a id ="aLinkBundles"class="page-scroll" href="#bundles"><font color="white">Bundles</font></a>
+                    <a id ="aLinkBundles" class="page-scroll" href="#bundles"><font color="white">Bundles</font></a>
                 </li>
                 <li id="navOrderSummary">
-                    <a class="page-scroll" href="#orderSummary"><font color="white">Order Summary</font></a>
+                    <a id ="aLinkOrderSummary" class="page-scroll" href="#orderSummary"><font color="white">Order Summary</font></a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -40,6 +40,7 @@
     <!-- /.container -->
 </nav>
 
+<!-- CustomerDetails Section -->
 <section id="customerDetails" class="customerDetails-section">
     <div class="container">
         <div class="row">
@@ -51,32 +52,21 @@
 </section>
 
 <!-- Services Section -->
-<section id="services404" class="second-section" style="display: none">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1>Services are not available anymore</h1>
-            </div>
-        </div>
-    </div>
-</section>
-<section id="service" class="second-section" style="display: block">
-
+<section id="service" class="second-section">
     @Html.Partial("~/Views/Services/chooseservice.cshtml")
-
 </section>
 
 
 <!-- Bundles Section -->
-<section id="bundles"  class="service-section" >
-    <div id="bundles404" style="display:block">
+<section id="bundles"  class="service-section">
+    <div id="bundles404">
       @Html.Partial("~/Views/Bundles/choosebundle.cshtml")
     </div>
     <div id="bundlesactive" style="display:none">
     <div class="container" onload="init()">
         <div class="row">
             <div class="col-lg-12">
-                <input type="button" id="button_json" value="URL" onclick="loadData()" />
+                <!--<input type="button" id="button_json" value="URL" onclick="loadData()" />-->
                 <br><br>
                 <label id="abp"></label>
 
@@ -102,21 +92,11 @@
     </div>
 </section>
 
-
- 
-
-
-
 <!-- Order Summary Section -->
 <section id="orderSummary" class="second-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1>Order Summary Section</h1>
-            </div>
-        </div>
-    </div>
+        @Html.Partial("~/Views/Portal/Index.cshtml", @Model)
 </section>
+
 <!-- jQuery -->
 <script src="~/Scripts/jquery.js"></script>
 <!-- Bootstrap Core JavaScript -->
@@ -132,8 +112,6 @@
         $("ul").hide();
         $("#divaddtocart").hide();
         $("#confirm").hide();
-
-
     }
 
     function loadData() {
@@ -248,8 +226,17 @@
                                     }
                                 }
                                 var j;
-                                for (j = 0; j < ProductsList.length; j++)
+                                var newdiv = document.createElement("div");
+                                newdiv.setAttribute("class", "product_details");
+                                for (j = 0; j < ProductsList.length; j++) {
                                     alert(ProductsList[j].product_name);
+                                    var newspan = document.createElement("span");
+                                    newspan.setAttribute("class", "product_name");
+                                    var newtext = document.createTextNode(ProductsList[j].product_name);
+                                    newspan.appendChild(newtext);
+                                    newdiv.appendChild(newspan);
+                                }
+                                document.getElementById("shoppingCart").appendChild(newdiv);
                             });
     }
 
@@ -276,7 +263,6 @@
             document.getElementById("bundles404").style.display = 'none';
             document.getElementById("aLinkBundles").href = "#bundles";
             document.getElementById("bundlesactive").style.display = 'block';
-         //   document.getElementById("aLinkBundles").style.backgroundColor = 'blue';
         }
 
         else {  }

@@ -11,8 +11,11 @@ namespace OrderingGUIConsumer.Controllers
     {
         public ActionResult Index(string agentName="")
         {
-            ViewBag.agentName = "Welcome " + agentName;
-            return View();
+            ViewBag.agentName = "Welcome " + Session["agentName"];
+            PortalModel details = new PortalModel();
+            PortalModel getobj = new PortalModel();
+            details = getobj.GetUsers();
+            return View(details);
         }
         public ActionResult LoginStartPage()
         {

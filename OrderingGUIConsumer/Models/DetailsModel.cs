@@ -8,7 +8,7 @@ namespace OrderingGUIConsumer.Models
 {
     public class DetailsModel
     {
-        public string insertDetails(string strFirstName, string strLastName, string strAddress, string strLocation)
+        public string insertDetails(string email,string strFirstName,string strLastName,string streetName,int zipcode,string strCity,string strState,int stateId,DateTime dob)
         {
             OleDbConnection connect = new OleDbConnection();
 
@@ -16,14 +16,19 @@ namespace OrderingGUIConsumer.Models
 
             connect.Open();
 
-            OleDbCommand command = new OleDbCommand("insert into tCustomerDetails values(?,?,?,?,'USA')", connect);
+            OleDbCommand command = new OleDbCommand("insert into t_Customer_Details values(?,?,?,?,?,?,?,'USA',?,?)", connect);
+
             command.Parameters.AddWithValue("?", strFirstName);
             command.Parameters.AddWithValue("?", strLastName);
-            command.Parameters.AddWithValue("?", strAddress);
-            command.Parameters.AddWithValue("?", strLocation);
-
+            command.Parameters.AddWithValue("?", streetName);
+            command.Parameters.AddWithValue("?", zipcode);
+            command.Parameters.AddWithValue("?", strCity);
+            command.Parameters.AddWithValue("?", strState);
+            command.Parameters.AddWithValue("?", stateId);
+            command.Parameters.AddWithValue("?", dob);
+            command.Parameters.AddWithValue("?", email);
             int count = command.ExecuteNonQuery();
-
+            
             if (count > 0)
             {
                 return "INFUSED";
@@ -31,7 +36,7 @@ namespace OrderingGUIConsumer.Models
             else
             {
                 return "NOT INSERTED";
-            }
+            }            
         }
     }
 }
