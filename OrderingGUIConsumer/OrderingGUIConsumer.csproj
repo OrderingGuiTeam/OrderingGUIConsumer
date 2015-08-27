@@ -170,6 +170,7 @@
     <Compile Include="Controllers\CustomerDetailsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -182,10 +183,14 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\centerVertical.css" />
     <Content Include="Content\scrolling-nav.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\data.jpg" />
+    <Content Include="images\video.jpg" />
+    <Content Include="images\voice.jpg" />
     <Content Include="Scripts\InsertDetails.js" />
     <Content Include="Scripts\jquery-2.0.3.min.js" />
     <Content Include="Scripts\jquery.easing.min.js" />
@@ -194,6 +199,10 @@
     <Content Include="Scripts\scrolling-nav.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="jsonfile\Bundles.json" />
+    <Content Include="jsonfile\geonames.json" />
+    <Content Include="jsonfile\OneNote Table Of Contents.onetoc2" />
+    <Content Include="jsonfile\Products.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -221,6 +230,8 @@
     <Content Include="Views\Login\ValidateCredentials.cshtml" />
     <Content Include="Views\Home\LoginStartPage.cshtml" />
     <Content Include="Views\CustomerDetails\Details.cshtml" />
+    <Content Include="Views\Services\chooseservice.cshtml" />
+    <Content Include="Views\Bundles\choosebundle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

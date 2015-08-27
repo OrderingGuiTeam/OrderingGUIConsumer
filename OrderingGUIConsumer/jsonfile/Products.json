@@ -1,0 +1,23 @@
+{
+  "products": [
+    {
+      "product_id": 1000,
+      "product_name": "Samsung S6",
+      "product_desc": "Premium High End smartphone",
+      "rate_value": 50000
+    },
+    {
+      "product_id": 1001,
+      "product_name": "iPhone 6",
+      "product_desc": "Premium High End smartphone",
+      "rate_value": 60000
+    },
+    {
+      "product_id": 1003,
+      "product_name": "Xperia Z Ultra",
+      "product_desc": "Premium High End smartphone",
+      "rate_value": 45000
+    }
+  ],
+  "dei": "lol"
+}

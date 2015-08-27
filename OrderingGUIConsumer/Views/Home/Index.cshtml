@@ -1,5 +1,7 @@
 ﻿<!-- Navigation -->
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+
+<nav class="navbar navbar-default navbar-fixed-top" style="background-color:crimson" role="navigation">
     <div class="container">
         <div class="navbar-header page-scroll">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -8,7 +10,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand page-scroll" href="#page-top">Ordering GUI - CMB</a>
+            <a class="navbar-brand page-scroll" href="#page-top"><font color="white">Ordering GUI - CMB</font></a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -18,18 +20,18 @@
                     <a class="page-scroll" href="#page-top"></a>
                 </li>
                 <li id="navServices">
-                    <a class="page-scroll" href="#services">Services</a>
+                    <a class="page-scroll" href="#service"><font color="white">Services</font></a>
                 </li>
                 <li id="navBundles">
-                    <a class="page-scroll" href="#bundles">Bundles</a>
+                    <a id ="aLinkBundles"class="page-scroll" href="#bundles"><font color="white">Bundles</font></a>
                 </li>
                 <li id="navOrderSummary">
-                    <a class="page-scroll" href="#orderSummary">Order Summary</a>
+                    <a class="page-scroll" href="#orderSummary"><font color="white">Order Summary</font></a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li id="agentName">
-                    <a class="page-scroll">@ViewBag.agentName</a>
+                    <a class="page-scroll"><font color="white">@ViewBag.agentName</font></a>
                 </li>
             </ul>
         </div>
@@ -58,25 +60,53 @@
         </div>
     </div>
 </section>
-<section id="services" class="second-section" style="display: block">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1>Services Section</h1>
-            </div>
-        </div>
-    </div>
+<section id="service" class="second-section" style="display: block">
+
+    @Html.Partial("~/Views/Services/chooseservice.cshtml")
+
 </section>
+
+
 <!-- Bundles Section -->
-<section id="bundles" class="first-section">
-    <div class="container">
+<section id="bundles"  class="service-section" >
+    <div id="bundles404" style="display:block">
+      @Html.Partial("~/Views/Bundles/choosebundle.cshtml")
+    </div>
+    <div id="bundlesactive" style="display:none">
+    <div class="container" onload="init()">
         <div class="row">
             <div class="col-lg-12">
-                <h1>Bundles Section</h1>
+                <input type="button" id="button_json" value="URL" onclick="loadData()" />
+                <br><br>
+                <label id="abp"></label>
+
+                <div id="prod" style="width:100%;">
+
+
+                    <div style="float:right;width:50%">
+                        <ul id="products">
+                            <!--<li>DETAILS</li>-->
+                            <div id="ProductName"></div>
+                            <div id="Description"></div>
+                            <div id="Price"></div>
+                            <div id="link"></div>
+                        </ul>
+                    </div>
+                </div>
+                <div id="confirm">
+                    <input type="button" id="confirmorder" disabled value="Confirm Order" />
+                </div>
             </div>
         </div>
     </div>
+    </div>
 </section>
+
+
+ 
+
+
+
 <!-- Order Summary Section -->
 <section id="orderSummary" class="second-section">
     <div class="container">
@@ -96,8 +126,159 @@
 <script src="~/Scripts/scrolling-nav.js"></script>
 
 <script type="text/javascript">
-    function Hide() {
+    var ProductsList = [];
+
+    function init() {
+        $("ul").hide();
+        $("#divaddtocart").hide();
+        $("#confirm").hide();
+
+
+    }
+
+    function loadData() {
+
+        $.ajax({
+            type: 'GET',
+            url: '/Products/Json',
+            dataType: 'json',
+
+            success: function (data) {
+
+                var obj = jQuery.parseJSON(data);
+                //alert(data);
+                alert(obj.products.length);
+
+                for (var i = 0; i < obj.products.length; i++) {
+                    var newdiv = document.createElement("div");
+                    newdiv.style.height = "100px"
+                    newdiv.style.width = "27%";
+                    //newdiv.style.border = "1px solid red";
+                    newdiv.style.paddingTop = "30px";
+                    newdiv.style.paddingRight = "30px";
+                  //  newdiv.setAttribute("class", "prodclass");
+                    var newb = document.createElement("button");
+                    //var checkbox = document.createElement("input type=\"checkbox\"");
+                    newb.setAttribute("id", obj.products[i].product_name);
+                    //newb.style.color = "crimson";
+                    //newb.style.height = "50px";
+                    //newb.style.color = "white";
+                    //newb.style.border = "none";
+                    newb.setAttribute("class", "btn btn-default");
+                    var newtext = document.createTextNode(obj.products[i].product_name);
+                    var newlink = document.createElement("hyperlink");
+                    var cartb = document.createElement("button");
+                    var carttext = document.createTextNode("Add to Cart");
+                    cartb.setAttribute("id", i);
+                    //cartb.style.backgroundColor = "#fff";
+                    //cartb.style.backgroundColor = "crimson";
+
+                    //cartb.style.border = "none";
+                    //cartb.style.height = "50px";
+                    //cartb.addClass("btn btn-danger");
+                    cartb.setAttribute("class", "btn btn-danger");
+                      //cartb.setAttribute("onclick", "getObject()");
+                    cartb.appendChild(carttext);
+                    newb.appendChild(newtext);
+                    newdiv.appendChild(newb);
+
+                    newdiv.appendChild(cartb);
+                    //newb.appendChild(checkbox);
+                    //newb.appendChild(newlink);
+                    //document.getElementById("list").appendChild(newb);
+                    //document.getElementById("list").appendChild(cartb);
+
+                    document.getElementById("prod").appendChild(newdiv);
+
+                    //document.getElementById("prod").appendChild(newdiv);
+
+                    //document.write("<br>");
+                    //document.write("<br/>");
+                }
+                $("ul").show();
+                $("#divaddtocart").show();
+                $("#confirm").show();
+                //alert(obj.geonames[0].fcodeName);
+                //$("#abp").val(obj.geonames[0].fcodeName)
+                //$("#textbox1").val(obj.geonames[0].fcodeName)
+                clicker(data);
+            },
+            error: function () { alert('Error in receiving JSON'); }
+
+        });
+    }
+
+    function clicker(data) {
+        //alert("inside clicker");
+
+        $(document.body).on(
+                            'click',
+                            'button',
+                            function () {
+
+                                var obj = jQuery.parseJSON(data);
+                                //alert(obj.geonames[0].name);
+                                //var JsonObj = jQuery.parseJSON(data);
+                                //alert(JsonObj.geonames[0].name);
+                                var i = 0;
+                                for (i = 0; i < obj.products.length; i++) {
+                                    //$("p").remove();
+                                    //alert(this.id);
+
+                                    if (this.id == obj.products[i].product_name) {
+                                        //alert("this id " + this.id);
+                                        //alert("toponym name " + obj.geonames[i].toponymName)
+                                        //alert("inside if");
+
+                                        $('#addtocart').prop('disabled', false);
+                                        document.getElementById("ProductName").innerHTML = " Name : " + obj.products[i].product_name;
+                                        document.getElementById("Description").innerHTML = " Description : " + obj.products[i].product_desc;
+                                        document.getElementById("Price").innerHTML = " Price : " + obj.products[i].rate_value;
+                                        document.getElementById("link").innerHTML = "<a href=\"" + obj.geonames[i].wikipedia + "\"> Wiki Link</a>";
+                                        //document.getElementById("divaddtocart").innerHTML = "<p>Add To Cart</p>";
+                                        document.getElementById("addtocart")
+                                    }
+
+                                    if (this.id == i) {
+                                        var choice = confirm("Are you sure you want to add to cart ?");
+                                        if (choice > 0) {
+                                            ProductsList.push(obj.products[i]);
+                                        }
+                                        else { }
+                                    }
+                                }
+                                var j;
+                                for (j = 0; j < ProductsList.length; j++)
+                                    alert(ProductsList[j].product_name);
+                            });
+    }
+
+    function AddToCart() {
+        ProductsList.push()
+    }
+
+
+    function getObject() {
+
+    }
+    function Hide()
+    {
         document.getElementById("services").style.display = 'none';
         document.getElementById("services404").style.display = 'block';
+    }
+    function choice()
+    {
+        
+        var chkd = document.form1.Voice.checked || document.form1.Video.checked || document.form1.Data.checked;
+
+        if (chkd) {
+
+            document.getElementById("bundles404").style.display = 'none';
+            document.getElementById("aLinkBundles").href = "#bundles";
+            document.getElementById("bundlesactive").style.display = 'block';
+         //   document.getElementById("aLinkBundles").style.backgroundColor = 'blue';
+        }
+
+        else {  }
     }
 </script>
