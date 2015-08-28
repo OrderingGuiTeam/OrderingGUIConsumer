@@ -36,8 +36,8 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li id="agentName">
-                    <a class="page-scroll"><font color="white">@ViewBag.agentName</font></a>
+                <li id="agentName">                    
+                    <a class="page-scroll"><div id="divAgentName" style="color: white"></div></a>
                 </li>
             </ul>
         </div>
@@ -126,8 +126,13 @@
 
 <script type="text/javascript">
 
-    //$("#sessionDiv").load("Session")
+    var 
 
+
+    $(document).ready(function () {        
+        $("#divAgentName").text("Welcome " + localStorage.getItem("userid"));
+    });
+    
 
     function init() {
         $("ul").hide();
@@ -267,13 +272,13 @@
                 //alert('bundles  ' + obj.bundles.length);
             {
                 if (ch1 && ch2 && ch3)
-                    choice = "internet&voice&video";
+                    choice = "internet-voice-video";
                 else if (ch1 && ch3)
-                    choice = "voice&video";
+                    choice = "voice-video";
                 else if (ch2 && ch3)
-                    choice = "internet&video";
+                    choice = "internet-video";
                 else
-                    choice = "voice&internet";
+                    choice = "voice-internet";
             }
             else {
                 if (ch1)
@@ -286,10 +291,13 @@
         }
 
         else { }
-        alert(choice);
+
+
+
+
         $.ajax({
-            type: 'GET',
-            url: '/Products/Json',
+            type: 'POST',
+            url: '/Products/Json1',
             data: {
 
                 'state': 'usa',
@@ -300,6 +308,7 @@
                 alert("choice : " + choice);
                 var obj = jQuery.parseJSON(data);
                 alert(data);
+                alert(obj);
                 //alert('products  ' + obj.products.length);
            
 

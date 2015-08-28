@@ -15,13 +15,15 @@ namespace OrderingGUIConsumer.Controllers
         {
             return View();
         }
-        public JsonResult Json(string state, string choice)
+        [HttpPost]
+        public JsonResult Json1(string state, string choice)
         {
+            choice = choice.Replace("-", "&");
             //getting json from a url
             //WebRequest request = WebRequest.Create("http://api.geonames.org/citiesJSON?north=44.1&south=-9.9&east=-22.4&west=55.2&lang=de&username=demo");
 
             //WebRequest request1 = WebRequest.Create("http://192.168.1.64:4782/PCatServiceCatalog/api/Consumer/location&package1");
-            WebRequest request2 = WebRequest.Create("http://192.168.1.64:4782/PCatServiceCatalog/api/Consumer/"+state+"&"+choice);
+            WebRequest request2 = WebRequest.Create("http://192.168.1.240:4782/PCatServiceCatalog/api/Consumer/"+state+"&"+choice);
 
             //permanent jenkins url
             //WebRequest request2 = WebRequest.Create("http://192.168.1.240:8080/PCatServiceCatalogue/api/Consumer/" + state + "&" + choice);
