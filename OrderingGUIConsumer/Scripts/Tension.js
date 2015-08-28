@@ -1,4 +1,9 @@
 ﻿function ValidateUser() {
+
+    var obj = new OrderForm();
+    var JsonObj = JSON.stringify(obj);
+    alert(JsonObj);
+
     var error = "";
     var flag = 0;
     var stripped = $('#mobile').val().replace(/[\(\)\.\-\ ]/g, '');
@@ -9,13 +14,13 @@
     var start = 1;
     
    
-        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($('#email').val())) {
-            flag = flag + 1;
-        }
-        else {
+        //if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($('#email').val())) {
+        //    flag = flag + 1;
+        //}
+        //else {
 
-            alert("You have either entered an invalid email address or its empty!");
-        }
+        //    alert("You have either entered an invalid email address or its empty!");
+        //}
 
 
         if (stripped == "") {
@@ -56,17 +61,36 @@
     var scountry = $('#scountry').val();
     var sdob = $('#sdob').val();
     var date = $('#inputField').val();
-    if (flag == 3) {
-        //validate user
-        
-       
-    
+    if (flag == 2) {
+        $.ajax({
+            type: 'POST',
+            //url: 'http://192.168.1.19:8080/OrderManagement/rest/om/submitorder',
+            
+            url: '../SendOrder/Send',
+            data: {
+                'json': JsonObj
+            },
+            success: function (data) {
+                alert(data);
+            },
+            //crossDomain: true,
+            //contentType: 'json',
+            //data: { JsonObj },
+            //success: function () {
+            //    alert('ok');
+            //},
+            error:
+                function () {
+                    alert('order submission error');
+                },
+        });
+        ////validate user
         setTimeout(SubmitOrder, 2000);
         alert("Wait for 5 seconds");
             function SubmitOrder() {
             $.ajax({
                 type: 'POST',
-                url: 'Index',
+                url: '../Portal/Index1',
                 data: {
                     'email': email,
                     'mobile': phone,
@@ -90,10 +114,10 @@
                     'sdob': sdob,
                     'duedate': date
                 },
-               
-
+                success: function (data) {
+                    //alert(data);
+                }
             });
-            alert("Going");
      }
        
      }

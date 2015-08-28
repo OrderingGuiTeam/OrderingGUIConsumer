@@ -31,6 +31,10 @@
                 });
             }
             window.location.href = data;
+            //$.ajax({
+            //    type: 'Post',
+            //    url: 'Home/Index',
+            //});
         }        
     }); 
 }

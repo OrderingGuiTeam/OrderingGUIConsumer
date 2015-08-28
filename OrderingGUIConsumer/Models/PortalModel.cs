@@ -41,39 +41,33 @@ namespace OrderingGUIConsumer.Models
             OleDbConnection connect = new OleDbConnection();
 
             connect.ConnectionString = "Provider=MSDAORA;Data Source=OrderingGUI;Persist Security Info=True;User ID=system; Password=123";
-                        
-            //OleDbCommand command = new OleDbCommand("select * from T_CUSTOMER_DETAILS", connect);
-            //connect.Open();
-            //OleDbDataReader reader = command.ExecuteReader();
-            //while(reader.Read())
-            //{
-            //    obj.Billfname = reader["strfirstname"].ToString();
-            //    obj.Billlname = reader["strlastname"].ToString();
-            //    obj.Billstreet = reader["STRSTREETNAME"].ToString();
-            //    obj.Billzipcode = Convert.ToInt32(reader["numzipcode"]);
-            //    obj.Billcity = reader["strcity"].ToString();
-            //    obj.Billstate = reader["strstate"].ToString();
-            //    obj.Billstateid = Convert.ToInt32(reader["numstateid"]);
-            //    obj.Billcountry = reader["strcountry"].ToString();
-            //    obj.Billdob = Convert.ToDateTime(reader["dob"]);
-            //    obj.Email = reader["email"].ToString();
-            //}
-            obj.Billfname = "sdfgs";
-            obj.Billlname = "sdfgs";
-            obj.Billstreet = "sdfgs";
-            obj.Billzipcode = 123456;
-            obj.Billcity = "sdfgs";
-            obj.Billstate = "sdfgs";
-            obj.Billstateid = 3;
-            obj.Billcountry = "sdfgs";
-            obj.Billdob = Convert.ToDateTime("10-10-1993");
-            obj.Email = "sdfgs";
+
+            OleDbCommand command = new OleDbCommand("select * from T_CUSTOMER_DETAILS", connect);
+            connect.Open();
+            OleDbDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                obj.Billfname = reader["strfirstname"].ToString();
+                obj.Billlname = reader["strlastname"].ToString();
+                obj.Billstreet = reader["STRSTREETNAME"].ToString();
+                obj.Billzipcode = Convert.ToInt32(reader["numzipcode"]);
+                obj.Billcity = reader["strcity"].ToString();
+                obj.Billstate = reader["strstate"].ToString();
+                obj.Billstateid = Convert.ToInt32(reader["numstateid"]);
+                obj.Billcountry = reader["strcountry"].ToString();
+                obj.Billdob = Convert.ToDateTime(reader["dob"]);
+                obj.Email = reader["email"].ToString();
+            }
             return obj;
         } 
 
-        public void AddUsers(PortalModel Usersobj)
+        public string AddUsers(PortalModel Usersobj)
         {
-            OleDbConnection connect = new OleDbConnection("Provider = MSDAORA; Data Source = orcl; Persist Security Info = True; User ID = scott;Password=tiger");
+            OleDbConnection connect = new OleDbConnection();
+
+            connect.ConnectionString = "Provider=MSDAORA;Data Source=OrderingGUI;Persist Security Info=True;User ID=system; Password=123";
+
+            connect.Open();
             OleDbCommand command = new OleDbCommand("insert into Contact values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )", connect);
             command.Parameters.AddWithValue("?", Usersobj.Phone);
             command.Parameters.AddWithValue("?", Usersobj.Billfname);
@@ -93,15 +87,21 @@ namespace OrderingGUIConsumer.Models
             command.Parameters.AddWithValue("?", Usersobj.Shipstate);
             command.Parameters.AddWithValue("?", Usersobj.Shipstateid);
             command.Parameters.AddWithValue("?", Usersobj.Shipcountry);
-            command.Parameters.AddWithValue("?", Usersobj.Shipstate);
             command.Parameters.AddWithValue("?", Usersobj.Bookdate);
             command.Parameters.AddWithValue("?", Usersobj.Duedate);
             command.Parameters.AddWithValue("?", Usersobj.Email);
             command.Parameters.AddWithValue("?", Usersobj.Shipdob);
-
-            connect.Open();
-
-            command.ExecuteNonQuery();
+            
+            int count = command.ExecuteNonQuery();
+            connect.Close();
+            if (count > 0)
+            {
+                return "Custumer contact stored!";
+            }
+            else
+            {
+                return "Customer contact could not be stored!";
+            }
 
 
         }

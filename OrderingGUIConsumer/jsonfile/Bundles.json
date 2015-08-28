@@ -1,22 +1,16 @@
 {
-    "bundles ": [
-        {
-            "bundle_type_cd ": "Bundle 1",
-            "bundle_level_cd": "Bundle level 1",
-            "bundle_desc": "description 1",
-            "rate_value": 1000
-        },
-        {
-            "bundle_type_cd ": "bundle 2",
-            "bundle_level_cd": "level 2",
-            "bundle_desc": "description 2",
-            "rate_value": 1500
-        },
-        {
-            "bundle_type_cd ": "bundle 3",
-            "bundle_level_cd": "level 3",
-            "bundle_desc": "decription 3",
-            "rate_value": 2000
-        }
-    ]
+  "Bundle": {
+    "Bundle_Id": {
+      "value": "b2015"
+    },
+    "Bundle_Desc": {
+      "value": "fios internet50+fios digital voice+fiostv custom tv"
+    },
+    "Bundle_Discount": {
+      "value": "20"
+    },
+    "Bundle_Cost": {
+      "value": "240"
+    }
+  }
 }

@@ -69,52 +69,58 @@
                 <center>
                     <div class="row">
                         <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Email ID" id="email" autocomplete="off" maxlength="20" required="" autofocus="" />
+                            <input type="text" class="form-control" placeholder="Email ID" id="email" maxlength="20" required="" autofocus /> <br />
+                            <br />
                         </div>
                         <div class="col-md-6">
-                            <input type="button" class="form-control" value="Check" id="btnLogin" /> <br /><br />
+                            <input type="button" class="form-control" value="Profile Pull" id="btnLogin" /> 
                         </div>
-                   </div>
+                    </div>
+                    <input type="text" class="form-control" placeholder="FirstName" id="txtFirstName" maxlength="20" required="" /> <br />
+                    <input type="text" class="form-control" placeholder="LastName" id="txtLastName" maxlength="20" required="" /> <br />
+                    <input type="text" class="form-control" placeholder="StreetName" id="txtStreetName" maxlength="20" required="" /> <br />
+                    <input type="text" class="form-control" placeholder="Zipcode" id="txtZipcode" maxlength="20" required="" /> <br />
+                    <input type="text" class="form-control" placeholder="City" id="txtCity" maxlength="20" required="" /> <br />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <select class="form-control" id="ddlState">
+                                <option value="select">--Select--</option>
+                                <option id="1" value="1">Alaska</option>
+                                <option id="2" value="2">Arizona</option>
+                                <option id="3" value="3">California</option>
+                                <option id="4" value="4">Colorado</option>
+                                <option id="5" value="5">Florida</option>
+                                <option id="6" value="6">Georgia</option>
+                                <option id="7" value="7">Hawaii</option>
+                                <option id="8" value="8">Indiana</option>
+                                <option id="9" value="9">Kentucky</option>
+                                <option id="10" value="10">Michigan</option>
+                                <option id="11" value="11">Mississippi</option>
+                                <option id="12" value="12">Missouri</option>
+                                <option id="13" value="13">New Hampshire</option>
+                                <option id="14" value="14">New Jersey</option>
+                                <option id="15" value="15">New Mexico</option>
+                                <option id="16" value="16">New York</option>
+                                <option id="17" value="17">Oklahoma</option>
+                                <option id="18" value="18">Oregon</option>
+                                <option id="19" value="19">Pennsylvania</option>
+                                <option id="20" value="20">Tennessee</option>
+                                <option id="21" value="21">Texas</option>
+                                <option id="22" value="22">Vermont</option>
+                                <option id="23" value="23">Virginia</option>
+                                <option id="24" value="24">Washington</option>
+                                <option id="25" value="25">West Virginia</option>
+                            </select><br />
+                        </div>
+                        <div class="col-md-6" style="float:left">
+                            <label>(Only in USA)</label>
+                        </div>
+                    </div>
 
-                        <input type="text" class="form-control" placeholder="FirstName" id="txtFirstName" maxlength="20" required="" /> <br />
-                        <input type="text" class="form-control" placeholder="LastName" id="txtLastName" maxlength="20" required="" /> <br />
-                        <input type="text" class="form-control" placeholder="StreetName" id="txtStreetName" maxlength="20" required="" /> <br />
-                        <input type="text" class="form-control" placeholder="Zipcode" id="txtZipcode" maxlength="20" required="" /> <br />
-                        <input type="text" class="form-control" placeholder="City" id="txtCity" maxlength="20" required="" /> <br />
+                            <input type="date" class="form-control" id="dateDob" maxlength="20" required="" />(DOB) <br />
+                            <input type="button" class="form-control" value="Infuse Details" id="btnLogin" onclick="InsertDetails()" />
 
-                        <select class="form-control" id="ddlState">
-                            <option value="select">--Select--</option>
-                            <option id="1" value="1">Alaska</option>
-                            <option id="2" value="2">Arizona</option>
-                            <option id="3" value="3">California</option>
-                            <option id="4" value="4">Colorado</option>
-                            <option id="5" value="5">Florida</option>
-                            <option id="6" value="6">Georgia</option>
-                            <option id="7" value="7">Hawaii</option>
-                            <option id="8" value="8">Indiana</option>
-                            <option id="9" value="9">Kentucky</option>
-                            <option id="10" value="10">Michigan</option>
-                            <option id="11" value="11">Mississippi</option>
-                            <option id="12" value="12">Missouri</option>
-                            <option id="13" value="13">New Hampshire</option>
-                            <option id="14" value="14">New Jersey</option>
-                            <option id="15" value="15">New Mexico</option>
-                            <option id="16" value="16">New York</option>
-                            <option id="17" value="17">Oklahoma</option>
-                            <option id="18" value="18">Oregon</option>
-                            <option id="19" value="19">Pennsylvania</option>
-                            <option id="20" value="20">Tennessee</option>
-                            <option id="21" value="21">Texas</option>
-                            <option id="22" value="22">Vermont</option>
-                            <option id="23" value="23">Virginia</option>
-                            <option id="24" value="24">Washington</option>
-                            <option id="25" value="25">West Virginia</option>
-                        </select><label>(Only in USA)</label><br />
-
-                        <input type="date" class="form-control" id="dateDob" maxlength="20" required="" />(DOB) <br />
-                        <input type="button" class="form-control" value="Infuse Details" id="btnLogin" onclick="InsertDetails()" />
-
-</center>
+                </center>
             </form>
         </div>
     </div>

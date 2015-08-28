@@ -1,23 +1,55 @@
 {
-  "products": [
+  "Product_Details": [
     {
-      "product_id": 1000,
-      "product_name": "Samsung S6",
-      "product_desc": "Premium High End smartphone",
-      "rate_value": 50000
+      "Product_ID": {
+        "value": "p1025"
+      },
+      "Product_Name": {
+        "value": "6gbper60$"
+      },
+      "Product_Description": {
+        "value": "6 gb data access service"
+      },
+      "Discount": {
+        "value": "10"
+      },
+      "Cost": {
+        "value": "60"
+      }
     },
     {
-      "product_id": 1001,
-      "product_name": "iPhone 6",
-      "product_desc": "Premium High End smartphone",
-      "rate_value": 60000
+      "Product_ID": {
+        "value": "p1024"
+      },
+      "Product_Name": {
+        "value": "3gb per45$"
+      },
+      "Product_Description": {
+        "value": "3 gb data access service"
+      },
+      "Discount": {
+        "value": "10"
+      },
+      "Cost": {
+        "value": "45"
+      }
     },
     {
-      "product_id": 1003,
-      "product_name": "Xperia Z Ultra",
-      "product_desc": "Premium High End smartphone",
-      "rate_value": 45000
+      "Product_ID": {
+        "value": "p1023"
+      },
+      "Product_Name": {
+        "value": "1gb per 30$"
+      },
+      "Product_Description": {
+        "value": "1 gb data access service"
+      },
+      "Discount": {
+        "value": "10"
+      },
+      "Cost": {
+        "value": "30"
+      }
     }
-  ],
-  "dei": "lol"
+  ]
 }

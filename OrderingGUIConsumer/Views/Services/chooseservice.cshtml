@@ -5,29 +5,32 @@
     <div class="row" style="height:100%">
 
 
-        <div style="height:90%;float:left;width:100%">
-            <div id="vdv" style="float:left;width:30%"><img src="~/images/voice.jpg"/></div>
-            <div style="float:left;width:30%"><img src="~/images/data.jpg"/></div>
-            <div style="float:left;width:30%"><img src="~/images/video.jpg" /></div>
+        <div style="height:auto;width:auto">
+            
+            <div class="col-md-4"><img src="~/images/voice.jpg" /></div>
+            <div class="col-md-4"><img src="~/images/data.jpg" /></div>
+            <div class="col-md-4"><img src="~/images/video.jpg" /></div>
+                    
         </div>
-        <div style="height:10%;float:left;width:100%">
+        <div style="height:auto;width:auto">
             <form name="form1" action="" method="get" align="center">
-                <div style="height:90%;float:left;width:30%">
+                <div class="col-md-4">
                     <input type="checkbox" name="Voice" value="Voice" class="chkbox">
                 </div>
-                <div style="height:90%;float:left;width:30%">
+                <div class="col-md-4">
                     <input type="checkbox" name="Data" value="Data" class="chkbox">
                 </div>
-                <div style="height:90%;float:left;width:30%">
+                <div class="col-md-4">
                     <input type="checkbox" name="Video" value="Video" class="chkbox">
                 </div>
-                <div style="height:10%;width:100%;float:left;padding-top:10px;padding-right:110px">
-                <input type="button" value="Submit" name="Submit" onclick="choice()" class="btn btn-danger"></div>
+                <div class="submitButton">
+                    <input type="button" value="Submit" name="Submit" onclick="loadData()" class="btn btn-danger">
+                </div>
             </form>
         </div>
 
 
 
-    </div>
+            </div>
 </div>
 

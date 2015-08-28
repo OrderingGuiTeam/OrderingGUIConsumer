@@ -9,7 +9,7 @@ namespace OrderingGUIConsumer.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index(string agentName="")
+        public ActionResult Index()
         {
             ViewBag.agentName = "Welcome " + Session["agentName"];
             PortalModel details = new PortalModel();
