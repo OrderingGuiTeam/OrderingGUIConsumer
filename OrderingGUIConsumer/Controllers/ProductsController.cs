@@ -22,6 +22,9 @@ namespace OrderingGUIConsumer.Controllers
 
             //WebRequest request1 = WebRequest.Create("http://192.168.1.64:4782/PCatServiceCatalog/api/Consumer/location&package1");
             WebRequest request2 = WebRequest.Create("http://192.168.1.64:4782/PCatServiceCatalog/api/Consumer/"+state+"&"+choice);
+
+            //permanent jenkins url
+            //WebRequest request2 = WebRequest.Create("http://192.168.1.240:8080/PCatServiceCatalogue/api/Consumer/" + state + "&" + choice);
             //WebRequest request3 = WebRequest.Create("http://192.168.1.64:4782/PCatServiceCatalog/api/Consumer/location&package1&package2&package3");
             //string s;
             //WebResponse response = request2.GetResponse();

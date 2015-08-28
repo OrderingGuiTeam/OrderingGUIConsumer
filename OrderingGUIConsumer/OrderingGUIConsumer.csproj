@@ -274,6 +274,7 @@
     <Content Include="Home\img\yearForward_over.gif" />
     <Content Include="Home\img\yo.png" />
     <Content Include="Home\img\Z5HVIOt.png" />
+    <Content Include="images\2015logowhite.png" />
     <Content Include="images\3LmmFFV.png" />
     <Content Include="images\aqua_dayDown.gif" />
     <Content Include="images\aqua_dayNormal.gif" />
@@ -426,6 +427,7 @@
     <Content Include="img\yearForward_over.gif" />
     <Content Include="img\yo.png" />
     <Content Include="img\Z5HVIOt.png" />
+    <Content Include="PCATurls\PCATUrls.txt" />
     <Content Include="Scripts\billship.js" />
     <Content Include="Scripts\Calendar date.js" />
     <Content Include="Scripts\InsertDetails.js" />
