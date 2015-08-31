@@ -116,6 +116,10 @@
         @Html.Partial("~/Views/Portal/Index.cshtml", @Model)
 </section>
 
+@*URL ACTION*@
+@*@Html.Hidden("loginURI", Url.Action("Login", "ValidateCredentials"))*@
+@*URL ACTION*@
+
 <!-- jQuery -->
 <script src="~/Scripts/jquery.js"></script>
 <!-- Bootstrap Core JavaScript -->
@@ -126,13 +130,15 @@
 
 <script type="text/javascript">
 
-    var 
+    @*var URI = {
+        loginURI: '@Url.Action("Login", "ValidateCredentials")'
+    }*@
 
+    var jsonUri = '@Url.Action("Json1", "Products")';
 
-    $(document).ready(function () {        
+    $(document).ready(function() {
         $("#divAgentName").text("Welcome " + localStorage.getItem("userid"));
-    });
-    
+    });    
 
     function init() {
         $("ul").hide();
@@ -141,8 +147,6 @@
 
 
     }
-
-
 
     var ProductsList = [];
     var BundlesList = [];
@@ -171,7 +175,7 @@
     //addresses
     function Connectionaddress() {
         this.streetname = $('#bstreet').val();
-        this.zipcode = $('#bzip').val(); 
+        this.zipcode = $('#bzip').val();
         this.city = $('#bcity').val();
         this.state = $('#bstate').val();
         this.stateid = $('#bstateid').val();
@@ -218,7 +222,7 @@
             this.servicename = BundlesList[i].Bundle_Desc.value;
             this.quantity = new Quantity();
         }
-        
+
     }
     //function Service2() {
     //    this.servicecode = "servicecode2";
@@ -252,7 +256,7 @@
     }
 
     function loadData() {
-        //alert('inside loadData');
+        console.log('inside loadData');
 
         var chkd = document.form1.Voice.checked || document.form1.Video.checked || document.form1.Data.checked;
         var choice;
@@ -265,8 +269,8 @@
             document.getElementById("aLinkBundles").href = "#bundles";
             document.getElementById("bundlesactive").style.display = 'block';
             //   document.getElementById("aLinkBundles").style.backgroundColor = 'blue';
-            
-            
+
+
 
             if ((ch1 && ch2) || (ch1 && ch3) || (ch2 && ch3) || (ch1 && ch2 && ch3))
                 //alert('bundles  ' + obj.bundles.length);
@@ -297,7 +301,7 @@
 
         $.ajax({
             type: 'POST',
-            url: '/Products/Json1',
+            url: jsonUri,
             data: {
 
                 'state': 'usa',
@@ -310,7 +314,7 @@
                 alert(data);
                 alert(obj);
                 //alert('products  ' + obj.products.length);
-           
+
 
                 if ((ch1 && ch2) || (ch1 && ch3) || (ch2 && ch3) || (ch1 && ch2 && ch3))
                     //alert('bundles  ' + obj.Bundle_Details);
@@ -573,22 +577,22 @@
             {
                 this[0]=new Products();
             }
-    
+
             function Products()
             {
                 this.product_id = 123;
                 this.product_name = "prod name";
                 this.product_desc = "prod desc";
                 this.cost = 1000;
-    
+
             }
-            
+
             function SampleJson()
             {
                 alert("sample json");
                 var obj = new Products();
                 alert(JSON.stringify(obj));
-    
+
             }*/
     //-----------------------------------
     //debugging code ends

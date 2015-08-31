@@ -13,6 +13,7 @@ namespace OrderingGUIConsumer.Models
 
         public string isUserValid(string strUser, string strPwd)
         {
+            return "Home/Index";
             OleDbConnection connect = new OleDbConnection();
 
             connect.ConnectionString = "Provider=MSDAORA;Data Source=OrderingGUI;Persist Security Info=True;User ID=system; Password=123";
