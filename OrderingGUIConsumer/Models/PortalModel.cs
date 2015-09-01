@@ -38,7 +38,7 @@ namespace OrderingGUIConsumer.Models
         public PortalModel GetUsers()
         {
             PortalModel obj = new PortalModel();
-            return obj;
+            //return obj;
             OleDbConnection connect = new OleDbConnection();
 
             connect.ConnectionString = "Provider=MSDAORA;Data Source=OrderingGUI;Persist Security Info=True;User ID=system; Password=123";

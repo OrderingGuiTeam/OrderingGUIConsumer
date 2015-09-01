@@ -401,7 +401,7 @@
 
         var obj = new OrderForm();
         var JsonObj = JSON.stringify(obj);
-        alert(JsonObj);
+        console.log(JsonObj);
 
         var error = "";
         var flag = 0;
@@ -487,7 +487,7 @@
             });
             ////validate user
             setTimeout(SubmitOrder, 2000);
-            alert("Wait for 5 seconds");
+            alert("Kindly wait for a few seconds to process your order");
             function SubmitOrder() {
                 $.ajax({
                     type: 'POST',
